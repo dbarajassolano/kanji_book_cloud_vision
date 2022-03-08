@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Emacs
+*~
+.dir-locals.el
+*#
+
+__pycache__
+.ipynb_checkpoints
+
+# Inputs and outputs
+*.sh
+*.pdf
+yml_output
+img_output

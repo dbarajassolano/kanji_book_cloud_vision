@@ -1,0 +1,7 @@
+min_confidence = 0.8
+min_word_height = 38
+min_kanji_height = 80
+min_interword_distance = 30
+max_distance_from_kanji_top = 80
+max_distance_from_kanji_bottom = 80
+display_font_size=36
