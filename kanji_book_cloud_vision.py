@@ -80,7 +80,7 @@ def words_raw_from_response(response: vision.AnnotateFileResponse, config: dict)
                 for word in paragraph.words:
                     word_text = ''.join([symbol.text for symbol in word.symbols])
                     bbox = word.bounding_box
-                    bheight = bbox.vertices[2].y - bbox.vertices[0].y
+                    bheight = abs(bbox.vertices[2].y - bbox.vertices[0].y)
                     iskanji = False
                     if word.confidence >= config['min_confidence'] and bheight >= config['min_word_height']:
                         if bheight >= config['min_kanji_height']:
