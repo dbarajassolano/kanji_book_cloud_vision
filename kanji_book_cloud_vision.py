@@ -158,13 +158,15 @@ def display(img_file: str, words: List[Word], conf: dict) -> None:
 def main() -> None:
     
     parser = argparse.ArgumentParser(description='Read kanjis and japanese vocabulary words from an image using Google Cloud Vision')
-    parser.add_argument('img_file', metavar='I', type=str, nargs=1, help='Input image')
-    parser.add_argument('out_file', metavar='O', type=str, nargs=1, help='Output YAML file')
+    parser.add_argument('img_file', metavar='I', type=str, help='Input image')
+    parser.add_argument('out_file', metavar='O', type=str, help='Output YAML file')
+    parser.add_argument('--conf',   metavar='C', type=str, help='Configuration file', default='conf.toml')
     args = parser.parse_args()
-    img_file = args.img_file[0]
-    out_file = args.out_file[0]
+    img_file  = args.img_file
+    out_file  = args.out_file
+    conf_file = args.conf
     
-    config = read_config('conf.toml')
+    config = read_config(conf_file)
     response = cloud_vision_read(img_file)
     words_raw = words_raw_from_response(response, config)
     queries = merge_and_filter_words(words_raw, config)
